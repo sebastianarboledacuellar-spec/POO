@@ -1,0 +1,101 @@
+
+1.	¿Qué es la encapsulación y por qué es importante en la Programación Orientada a Objetos?
+
+R=/   La encapsulación protege los datos internos de una clase y controla su acceso mediante métodos públicos.
+
+
+2.	¿Qué diferencia hay entre un método y un constructor?
+
+R=/   Un constructor inicializa objetos, mientras que un método define comportamientos.
+
+
+3.	¿Por qué los atributos deben ser privados y no públicos?
+
+R=/   Los atributos deben ser privados para garantizar integridad y control.
+
+
+4.	¿Qué función cumplen los getters y setters?
+
+R=/   Los getters y setters permiten leer o modificar valores con validación.
+
+
+5.	Verdadero o falso: “Un método setter no debe validar los datos que recibe.” Justifique.
+
+R=/   Falso: un setter siempre debe validar los datos.
+
+1.	¿Por qué el atributo saldo debe ser privado?
+
+R=/ para proteger su valor y evitar modicaciones directas.
+
+2.	¿Qué ocurriría si se intenta depositar un valor negativo?
+
+R=/ el metodo depositar deberia rechazarlo
+
+3.	Modifique en vivo el código para permitir un sobregiro máximo de -50 y explique el cambio.
+
+R=/ // ...existing code...
+    // Método retirar
+    public void retirar(double monto) {
+        if (monto > 0 && (saldo - monto) >= -50) { // Permitir sobregiro hasta -50
+            this.saldo -= monto;
+            System.out.println("Retiro exitoso. Nuevo saldo: " + this.saldo);
+        } else if (monto <= 0) {
+            System.out.println("El monto a retirar debe ser mayor que 0.");
+        } else {
+            System.out.println("No puedes exceder el sobregiro máximo de -50.");
+        }
+    }
+// ...existing code...
+
+Se modificó la condición del método retirar para permitir que el saldo llegue hasta -50 como máximo. 
+Ahora, el retiro solo se realiza si el saldo resultante es mayor o igual a -50, permitiendo un 
+sobregiro controlado.
+
+1.	¿Por qué se valida el porcentaje del descuento?
+
+R=/ para evitar valores incorrectos o excesivos que puedan afectar el calculo del precio.
+
+2.	¿Qué sucede si el precio unitario es negativo?
+
+R=/ Si el precio unitario es negativo, puede causar errores en el cálculo del subtotal y afectar 
+la lógica del sistema.
+
+3.	Agregue en vivo un impuesto del 8 % y explique cómo afecta al total.
+
+R=/ // ...existing code...
+    // Método para calcular el total con impuesto
+    public double calcularTotalConImpuesto() {
+        double subtotal = calcularSubtotal();
+        double impuesto = subtotal * 0.08; // 8% de impuesto
+        return subtotal + impuesto;
+    }
+// ...existing code...
+
+
+Explicación:
+Se agregó el método `calcularTotalConImpuesto` que suma un 8% de impuesto al subtotal del producto.
+Esto aumenta el total a pagar, reflejando el costo real con el impuesto incluido.
+
+
+
+//atributo
+-------------------------------------------------------------------------------------------------------------
+ Nombre                  | Tipo de dato     |       Visibilidad       |  Descripción                        |
+-------------------------------------------------------------------------------------------------------------
+| titular                |  String          |   privado               |  nombre del propietario de la cuenta|
+-------------------------------------------------------------------------------------------------------------
+| número de cuenta       |  string          |   privado               |  identificador unico de la cuenta   |
+-------------------------------------------------------------------------------------------------------------
+| saldo                  |  double          |   privado               |  monto disponible en la cuenta      |
+-------------------------------------------------------------------------------------------------------------
+
+//metodos
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Nombre                  | parametro                |       retorno           |  Descripción                                                                                            |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| DEPOSITAR              |  double monto            |        void             |  Permite agregar dinero a la cuenta si el monto es válido                                               |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| RETIRAR|               |  double monto            |        void             |  Permite extraer dinero de la cuenta si el monto es válido y no excede el límite de sobregiro permitido |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| TOSTRING               |  ninguno                 |        string           |  Devuelve una representación en texto de los datos principales del objeto                               |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
